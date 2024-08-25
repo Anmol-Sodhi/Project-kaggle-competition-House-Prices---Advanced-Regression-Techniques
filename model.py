@@ -26,7 +26,7 @@ features = [
 
 X = training_data[features]
 
-# Handle categorical variables using One-Hot Encoding
+# Handling categorical variables using One-Hot Encoding
 categorical_cols = [col for col in X.columns if X[col].dtype == "object"]
 numerical_cols = [col for col in X.columns if X[col].dtype in ['int64', 'float64']]
 
@@ -39,7 +39,7 @@ categorical_transformer = Pipeline(steps=[
     ('onehot', OneHotEncoder(handle_unknown='ignore'))
 ])
 
-# Bundle preprocessing for numerical and categorical data
+# Bundling preprocessing for numerical and categorical data
 preprocessor = ColumnTransformer(
     transformers=[
         ('num', numerical_transformer, numerical_cols),
@@ -48,7 +48,22 @@ preprocessor = ColumnTransformer(
 
 # making the  models
 rf_model = RandomForestRegressor(random_state=1, n_estimators=200, max_depth=15)
-xgb_model = XGBRegressor(random_state=1, n_estimators=100, learning_rate=0.1, max_depth=5)
+
+''' older version of xgb_model
+xgb_model = XGBRegressor(random_state=1, n_estimators=100, learning_rate=0.1, max_depth=5) '''
+
+# Newer version with better hyperparamter tuning increased the accuracy by about almost 6% from 0.15 previosly to 0.14  
+xgb_model = XGBRegressor(
+    random_state=1,
+    n_estimators=300,       # Increased number of trees
+    learning_rate=0.05,     # Lower learning rate for more careful learning
+    max_depth=6,            # Slightly deeper trees to capture more complexity
+    min_child_weight=3,     # More conservative to prevent overfitting
+    subsample=0.8,          # Use 80% of the data to grow each tree
+    colsample_bytree=0.8,   # Use 80% of the features to grow each tree
+    gamma=0.1               # Make splitting more conservative
+)
+
 
 # Bundle preprocessing and modeling code in a pipeline
 rf_pipeline = Pipeline(steps=[('preprocessor', preprocessor), ('model', rf_model)])
@@ -59,7 +74,7 @@ X_train, X_valid, y_train, y_valid = train_test_split(X, y, train_size=0.8, test
 
 # Fitting the models
 rf_pipeline.fit(X_train, y_train)
-xgb_pipeline.fit(X_train, y_train)
+xgb_pipeline.fit(X_train, y_train) 
 
 # Getting predictions on validation data
 rf_preds = rf_pipeline.predict(X_valid)
