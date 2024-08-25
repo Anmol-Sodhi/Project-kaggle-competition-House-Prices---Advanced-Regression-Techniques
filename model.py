@@ -65,7 +65,7 @@ xgb_model = XGBRegressor(
 )
 
 
-# Bundle preprocessing and modeling code in a pipeline
+# Bundling preprocessing and modeling code in a pipeline
 rf_pipeline = Pipeline(steps=[('preprocessor', preprocessor), ('model', rf_model)])
 xgb_pipeline = Pipeline(steps=[('preprocessor', preprocessor), ('model', xgb_model)])
 
