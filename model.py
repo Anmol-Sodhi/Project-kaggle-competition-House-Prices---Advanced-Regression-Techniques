@@ -52,16 +52,16 @@ rf_model = RandomForestRegressor(random_state=1, n_estimators=200, max_depth=15)
 ''' older version of xgb_model
 xgb_model = XGBRegressor(random_state=1, n_estimators=100, learning_rate=0.1, max_depth=5) '''
 
-# Newer version with better hyperparamter tuning increased the accuracy by about almost 6% from 0.15 previosly to 0.14  
+# Newer version with better hyperparamter tuning increased the accuracy by about almost 5% from 0.15225 previosly to 0.14545  
 xgb_model = XGBRegressor(
     random_state=1,
-    n_estimators=300,       # Increased number of trees
-    learning_rate=0.05,     # Lower learning rate for more careful learning
+    n_estimators=3000,       # Increased number of trees
+    learning_rate=0.005,     # Lower learning rate for more careful learning
     max_depth=6,            # Slightly deeper trees to capture more complexity
     min_child_weight=3,     # More conservative to prevent overfitting
-    subsample=0.8,          # Use 80% of the data to grow each tree
-    colsample_bytree=0.8,   # Use 80% of the features to grow each tree
-    gamma=0.1               # Make splitting more conservative
+    subsample=0.7,          # Use 80% of the data to grow each tree
+    colsample_bytree=0.7,   # Use 80% of the features to grow each tree
+    gamma=0.2               # Make splitting more conservative
 )
 
 
