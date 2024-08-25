@@ -1,7 +1,7 @@
 # Project-kaggle-competition-House-Prices---Advanced-Regression-Techniques
 
 
-My score for this on kaggle leaderboard: 0.15113
+
 
 
 # House Prices - Advanced Regression Techniques
