@@ -1,12 +1,13 @@
 # Project-kaggle-competition-House-Prices---Advanced-Regression-Techniques
 
 
+New update: Increased accuracy and an imporved score of 0.14671 on Kaggle by Hyperparameter of  Tuning of the xgb_model
 
 
 
 # House Prices - Advanced Regression Techniques
 
-This project is part of the Kaggle competition: **House Prices - Advanced Regression Techniques**. The goal of the competition is to predict the sales prices of houses based on various features of the properties. This repository contains the code I used to participate in the competition, where I achieved a leaderboard score of **0.15113**.
+This project is part of the Kaggle competition: **House Prices - Advanced Regression Techniques**. The goal of the competition is to predict the sales prices of houses based on various features of the properties. This repository contains the code I used to participate in the competition, where I previosly achieved a leaderboard score of 0.15113 ,  new score is 0.14671 by tuning the xgb_model.
 
 ## Project Overview
 
