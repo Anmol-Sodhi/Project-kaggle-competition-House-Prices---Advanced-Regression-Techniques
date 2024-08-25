@@ -1,7 +1,7 @@
 # Project-kaggle-competition-House-Prices---Advanced-Regression-Techniques
 
 
-New update: Increased accuracy and an imporved score of 0.14671 on Kaggle by Hyperparameter Tuning of the xgb_model
+New update: Increased accuracy and an imporved score of 0.14545 on Kaggle by Hyperparameter Tuning of the xgb_model
 
 
 
